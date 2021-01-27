@@ -1,0 +1,64 @@
+1. django-admin startproject project_name : to create a django project (conytains folder with name of our
+    project inside that there is another folder which contains several files which will be used in making
+    a dynamic website).
+
+    Ex: django-admin startproject website
+        folder created will be:
+
+       -website (folder)
+
+         -website (folder)
+
+           -__pyache__ (folder)
+
+           -__init__.py (file)
+
+           -asgi.py (file)
+
+           -settings.py (file)
+
+           -urls.py (file)
+
+           -wsgi (file)
+
+         -manage.py (file)
+ note:-- Above I have used Indentation for project folder structure, which indicates that the indented named file or folder is inside 
+         the un-indented one, same indent level means they are in same directory.
+
+2. To runa local server (http://127.0.0.1:8000/) provided by django (for debugging and other things not for deployment):
+  type python manage.py runserver and hit Enter (in terminal within the 2nd root folder website). Our local server
+  will start and we directed to a django default page for success.
+
+==> In Django we can have multiple apps inside a project. To use this feature we have to make an app(s)
+    inside the Django second root folder.
+    type python manage.py startapp app_name and hit Enter
+    an app will be created insite our main project folder.
+
+==> views.py : is going to be the file that lets us describe what will the user sees when they visit a particular route.
+    Ex: what the users sees when he/ she goes to website/home route (we can decide what gets render to the user)
+
+==> To make our app to work we have to mention that name,  go to settings.py of project and search for INSTALLED_APPS = [
+                                                                                                                            'add your app_name'
+                                                                                                                    ] 
+   That's it now Django will recognise our created app and now it is good to go.
+
+Now open views.py of app and and define a function which returns HttpResponse ("whatever we want to display on web page")
+ In order to render it we have to add it to urls.py of app, so first create urls.py for app and then define urlpatterns = [
+                                                                                                                        path("", views.function_name, name="any name generally function name is given")
+
+                                                                                                                    ]    
+ Imports:  
+ --- in views.py: from django.shortcuts import render
+                  from django.http import HttpResponse
+
+ --- in urls.py: from django.urls import path
+                 from . import views 
+note: in path() we have used "" (blank string), it means when someone uses empty route (app_name/ ) he/she will be directed to the url defined in this path or show whatever is returning by function defined in it. 
+
+now last thing to make all this work is, goto urls.py of our project (this is the urls.py file for the entire project, for all the apps that might be contained within this project) and then add 
+our own route or path in urlpatterns = [
+                                        path('app_name', include("app_name.urls"))
+                                ]   
+-- Basically we are telling django that whenever you get request for my appname just go to urls.py of app and check for this route and then app urls.py will send it to app views.py
+   and then views.py render us whatever there is mention in that function (it wii be followed if searched route exists else we will be redirected to page not found error).
+                                                                                              
