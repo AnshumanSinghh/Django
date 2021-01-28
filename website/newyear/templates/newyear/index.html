@@ -1,19 +1,21 @@
+{% load static %} <!--  to load static files for this page -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Birthday!</title>
-    <style>
-        h1{
-            font-size: 40px;
-            font-weight: bold;
-            color:blueviolet;
-            text-align: center;
-        }
-    </style>
+    <title>Is New Year?</title>
+    <!-- to link css files in Django way use href="{% static 'route of css file'%}" 
+      best practice make a static folder then inside this make a folder having same
+    name as our app_name and then create css file inside this. For example in this 
+    case our css file route will be: "{% static 'folder_name(app_name)/css_file_name' %}"-->
+    <link rel="stylesheet" href="{% static 'newyear/style.css' %}">
+
 </head>
 <body>
+    <div id="h2">
+        <h2>Used Static file to add Styling to this webpage.</h2>
+    </div>
     {% if newyear %}
         <h1>YES!!</h1>
     {% else %}
