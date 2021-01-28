@@ -1,0 +1,14 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+h1{
+    font-family: sans-serif;
+    font-size: 90px;
+    text-align: center;
+    padding-top: 38vh;
+}
+#h2{
+    color:aquamarine;
+    text-align: center;
+}

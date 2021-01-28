@@ -1,0 +1,9 @@
+{% extends "task/layout.html" %}
+{% block body %}
+    <h1> ==> Add Tasks : [I'm using Template Inheritance] </h1>
+    <form action="{% url 'task:add' %}" method="POST">{% csrf_token %}
+        {{ form }} <!-- from views.py a context returned by add function -->
+        <input type="submit">
+    </form>
+    <a href="{% url 'task:index' %}">View Task</a>
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends "task/layout.html" %}  <!-- for inheriting from layout.html [Template Inheritance] -->
+
+{% block body %}
+    <!-- views.py is sending a context (a list of tasks). So we will 
+        capture the list iterate over the list and generate dynamic li items for each task -->
+    <div class="main">
+        <h1>Tasks: (Using Template Inheritance)</h1>
+        <ul>
+            {% for task in tasks %}
+                <li><b>{{ task }}</b></li>
+            {% endfor %}
+        </ul>
+        <button><a href="{% url 'task:add' %}">Add a New Task</a></button>
+        <!-- to redirect to any route or url even when we modified our url, there's way to
+        to this Django. Just use href="{\% url 'name of route mentioned in apps url.py path' \%}" 
+        '\%' sign is used for escaping characters bcz Django will thow error even it is in commented part,
+        by using this way we doesn't need to change the url every where since we are using its 
+        rout_name instead of url itself. -->
+
+    </div>
+<!-- Here I'm saying use the layout.html template, except inside
+of block body, I would like to include all of this (whatever content 
+written above) content. -->
+{% endblock %}
+
