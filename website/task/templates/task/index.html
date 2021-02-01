@@ -8,6 +8,8 @@
         <ul>
             {% for task in tasks %}
                 <li><b>{{ task }}</b></li>
+                {% empty %}  <!-- if the list is empty then only it will be rendered -->
+                    <li><b>No Tasks...</b></li>
             {% endfor %}
         </ul>
         <button><a href="{% url 'task:add' %}">Add a New Task</a></button>
